@@ -1,0 +1,1452 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI и креативные профессии: трансформация 2024–2026</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+:root {
+  --bg: #0a0a0f;
+  --bg-card: #12121a;
+  --text: #e8e6e3;
+  --text-muted: #8a8a9a;
+  --accent: #6366f1;
+  --accent2: #a78bfa;
+  --accent3: #34d399;
+  --accent4: #f472b6;
+  --accent5: #fbbf24;
+  --accent6: #38bdf8;
+  --danger: #ef4444;
+  --border: #1e1e2e;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* === HERO === */
+.hero {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(ellipse at 30% 50%, rgba(99, 102, 241, 0.08) 0%, transparent 50%),
+              radial-gradient(ellipse at 70% 50%, rgba(167, 139, 250, 0.06) 0%, transparent 50%);
+  animation: heroPulse 8s ease-in-out infinite alternate;
+}
+
+@keyframes heroPulse {
+  0% { transform: scale(1) rotate(0deg); }
+  100% { transform: scale(1.05) rotate(2deg); }
+}
+
+.hero-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1.15;
+  max-width: 900px;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.hero h1 em {
+  font-style: italic;
+  color: var(--accent2);
+}
+
+.hero-subtitle {
+  font-size: clamp(1rem, 2vw, 1.25rem);
+  color: var(--text-muted);
+  max-width: 600px;
+  margin-bottom: 3rem;
+  position: relative;
+  z-index: 1;
+}
+
+.scroll-hint {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--text-muted);
+  font-size: 0.8rem;
+  animation: bounce 2s infinite;
+}
+
+.scroll-hint svg { width: 24px; height: 24px; stroke: var(--text-muted); }
+
+@keyframes bounce {
+  0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
+  40% { transform: translateY(-8px); }
+  60% { transform: translateY(-4px); }
+}
+
+/* === SECTIONS === */
+.act {
+  min-height: 100vh;
+  padding: 8rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.act-number {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 1rem;
+}
+
+.act h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2rem, 4vw, 3.2rem);
+  font-weight: 700;
+  text-align: center;
+  margin-bottom: 1rem;
+  max-width: 700px;
+}
+
+.act-desc {
+  font-size: 1.05rem;
+  color: var(--text-muted);
+  text-align: center;
+  max-width: 620px;
+  margin-bottom: 3rem;
+  line-height: 1.8;
+}
+
+/* === NARRATIVE === */
+.narrative {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: 6rem 2rem;
+  text-align: center;
+}
+
+.narrative p {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+  line-height: 1.8;
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.narrative p strong {
+  color: var(--text);
+  font-style: normal;
+  font-weight: 700;
+}
+
+/* === ACT 1: COUNTERS === */
+.counters-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.counter-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2.5rem 2rem;
+  text-align: center;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+
+.counter-card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.counter-value {
+  font-size: 3.5rem;
+  font-weight: 800;
+  color: var(--accent);
+  line-height: 1;
+  margin-bottom: 0.5rem;
+}
+
+.counter-value .unit { font-size: 2rem; }
+
+.counter-label {
+  font-size: 0.9rem;
+  color: var(--text-muted);
+  line-height: 1.5;
+}
+
+.counter-source {
+  font-size: 0.7rem;
+  color: #555;
+  margin-top: 0.75rem;
+}
+
+/* === ACT 2: BAR CHART === */
+.bar-chart-container {
+  max-width: 800px;
+  width: 100%;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  margin-bottom: 1.2rem;
+  gap: 1rem;
+}
+
+.bar-label {
+  min-width: 200px;
+  text-align: right;
+  font-size: 0.9rem;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.bar-track {
+  flex: 1;
+  height: 36px;
+  background: var(--bg-card);
+  border-radius: 8px;
+  overflow: hidden;
+  position: relative;
+}
+
+.bar-fill {
+  height: 100%;
+  border-radius: 8px;
+  width: 0%;
+  transition: width 1.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  padding-right: 12px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: #fff;
+  min-width: 50px;
+}
+
+.bar-fill.negative {
+  background: linear-gradient(90deg, var(--danger), #dc2626);
+}
+
+.bar-fill.positive {
+  background: linear-gradient(90deg, var(--accent3), #059669);
+}
+
+.bar-change {
+  min-width: 60px;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.bar-change.neg { color: var(--danger); }
+.bar-change.pos { color: var(--accent3); }
+
+/* === ACT 3: TIMELINE === */
+.timeline-container {
+  max-width: 900px;
+  width: 100%;
+  position: relative;
+  padding-left: 40px;
+}
+
+.timeline-line {
+  position: absolute;
+  left: 18px;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: var(--border);
+}
+
+.timeline-line-fill {
+  width: 100%;
+  height: 0%;
+  background: linear-gradient(180deg, var(--accent), var(--accent2), var(--accent3));
+  transition: height 2s ease;
+}
+
+.timeline-year {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.8rem;
+  font-weight: 700;
+  color: var(--accent);
+  margin: 2rem 0 1rem;
+  padding-left: 30px;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.timeline-year.visible { opacity: 1; transform: translateX(0); }
+
+.timeline-item {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 1rem;
+  opacity: 0;
+  transform: translateX(-20px);
+  transition: opacity 0.5s ease, transform 0.5s ease;
+  padding-left: 30px;
+  position: relative;
+}
+
+.timeline-item.visible { opacity: 1; transform: translateX(0); }
+
+.timeline-item::before {
+  content: '';
+  position: absolute;
+  left: -30px;
+  top: 8px;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--accent);
+  border: 2px solid var(--bg);
+  z-index: 1;
+}
+
+.timeline-item.highlight::before {
+  width: 14px;
+  height: 14px;
+  left: -32px;
+  top: 6px;
+  background: var(--accent5);
+  box-shadow: 0 0 12px rgba(251, 191, 36, 0.5);
+}
+
+.timeline-date {
+  min-width: 90px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--accent2);
+}
+
+.timeline-content {
+  flex: 1;
+}
+
+.timeline-tool {
+  font-weight: 600;
+  color: var(--text);
+  font-size: 0.95rem;
+}
+
+.timeline-event {
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+/* === ACT 4: DONUT CHARTS === */
+.donuts-wrapper {
+  display: flex;
+  gap: 4rem;
+  flex-wrap: wrap;
+  justify-content: center;
+  max-width: 900px;
+}
+
+.donut-section {
+  text-align: center;
+}
+
+.donut-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+}
+
+.donut-canvas {
+  display: block;
+  margin: 0 auto 1.5rem;
+}
+
+.donut-legend {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  align-items: flex-start;
+  padding-left: 1rem;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.legend-dot {
+  width: 12px;
+  height: 12px;
+  border-radius: 3px;
+  flex-shrink: 0;
+}
+
+.legend-item .value {
+  font-weight: 700;
+  color: var(--text);
+}
+
+/* === ACT 5: LINE CHART === */
+.line-chart-wrapper {
+  max-width: 850px;
+  width: 100%;
+  position: relative;
+}
+
+.line-chart-canvas {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+}
+
+.line-legend {
+  display: flex;
+  gap: 2rem;
+  justify-content: center;
+  margin-top: 1.5rem;
+  flex-wrap: wrap;
+}
+
+.line-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-muted);
+}
+
+.line-legend-swatch {
+  width: 24px;
+  height: 3px;
+  border-radius: 2px;
+}
+
+.line-legend-swatch.dashed {
+  background: repeating-linear-gradient(90deg, var(--accent2) 0px, var(--accent2) 6px, transparent 6px, transparent 10px);
+}
+
+/* === QUIZ === */
+.quiz-section {
+  max-width: 700px;
+  width: 100%;
+  padding: 4rem 2rem;
+}
+
+.quiz-section h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 2.2rem;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+.quiz-subtitle {
+  text-align: center;
+  color: var(--text-muted);
+  margin-bottom: 3rem;
+}
+
+.quiz-question {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  padding: 2rem;
+  margin-bottom: 1.5rem;
+  display: none;
+}
+
+.quiz-question.active { display: block; }
+
+.quiz-q-number {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.75rem;
+}
+
+.quiz-q-text {
+  font-size: 1.1rem;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  line-height: 1.6;
+}
+
+.quiz-options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.quiz-option {
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  transition: all 0.2s;
+  background: transparent;
+  color: var(--text);
+  text-align: left;
+  font-family: inherit;
+}
+
+.quiz-option:hover {
+  border-color: var(--accent);
+  background: rgba(99, 102, 241, 0.05);
+}
+
+.quiz-option.selected {
+  border-color: var(--accent);
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.quiz-progress {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+  margin-bottom: 2rem;
+}
+
+.quiz-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: var(--border);
+  transition: background 0.3s;
+}
+
+.quiz-dot.done { background: var(--accent); }
+.quiz-dot.current { background: var(--accent2); box-shadow: 0 0 8px rgba(167, 139, 250, 0.5); }
+
+.quiz-nav {
+  display: flex;
+  justify-content: center;
+  margin-top: 1.5rem;
+}
+
+.quiz-btn {
+  padding: 0.8rem 2rem;
+  border: none;
+  border-radius: 10px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  font-family: inherit;
+  background: var(--accent);
+  color: #fff;
+  transition: opacity 0.2s;
+}
+
+.quiz-btn:hover { opacity: 0.85; }
+.quiz-btn:disabled { opacity: 0.3; cursor: default; }
+
+.quiz-result {
+  display: none;
+  text-align: center;
+  padding: 3rem 2rem;
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 16px;
+}
+
+.quiz-result.active { display: block; }
+
+.quiz-result-score {
+  font-size: 4rem;
+  font-weight: 800;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.quiz-result-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.quiz-result-text {
+  color: var(--text-muted);
+  max-width: 500px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+/* === FOOTER === */
+.footer {
+  padding: 4rem 2rem;
+  max-width: 800px;
+  margin: 0 auto;
+  border-top: 1px solid var(--border);
+}
+
+.footer h3 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+}
+
+.footer ul {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.footer li {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  line-height: 1.6;
+}
+
+.footer a {
+  color: var(--accent2);
+  text-decoration: none;
+}
+
+.footer a:hover { text-decoration: underline; }
+
+.footer-note {
+  margin-top: 2rem;
+  font-size: 0.75rem;
+  color: #444;
+  text-align: center;
+}
+
+/* === TRANSITIONS === */
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 600px) {
+  .bar-label { min-width: 120px; font-size: 0.8rem; }
+  .donuts-wrapper { flex-direction: column; align-items: center; gap: 3rem; }
+  .timeline-date { min-width: 70px; }
+  .act { padding: 5rem 1.2rem; }
+  .line-chart-canvas { max-width: 100%; }
+}
+</style>
+</head>
+<body>
+
+<!-- ===== HERO ===== -->
+<section class="hero">
+  <div class="hero-label">Data Scrollytelling · Март 2026</div>
+  <h1>AI и креативные профессии: <em>большая трансформация</em></h1>
+  <p class="hero-subtitle">Как искусственный интеллект за два года изменил работу дизайнеров, копирайтеров, иллюстраторов, музыкантов и видеомонтажёров — и что будет дальше</p>
+  <div class="scroll-hint">
+    <span>Скролльте, чтобы начать</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round"><path d="M12 5v14M5 12l7 7 7-7"/></svg>
+  </div>
+</section>
+
+<!-- ===== NARRATIVE 1 ===== -->
+<div class="narrative fade-in">
+  <p>В 2024 году <strong>86% креативных профессионалов</strong> уже использовали генеративный AI в работе. Это не тихая революция — это лавина, изменившая облик индустрии быстрее, чем появление Photoshop или YouTube.</p>
+</div>
+
+<!-- ===== ACT 1: МАСШТАБ ===== -->
+<section class="act" id="act1">
+  <div class="act-number fade-in">Акт I</div>
+  <h2 class="fade-in">Масштаб перемен</h2>
+  <p class="act-desc fade-in">Цифры, которые определяют новую реальность креативной индустрии</p>
+
+  <div class="counters-grid" id="countersGrid">
+    <div class="counter-card" data-target="86" data-suffix="%">
+      <div class="counter-value"><span class="num">0</span><span class="unit">%</span></div>
+      <div class="counter-label">креаторов используют генеративный AI</div>
+      <div class="counter-source">Adobe Creators' Toolkit Report, 2025</div>
+    </div>
+    <div class="counter-card" data-target="47" data-suffix="%">
+      <div class="counter-value"><span class="num">0</span><span class="unit">%</span></div>
+      <div class="counter-label">применяют AI ежедневно</div>
+      <div class="counter-source">Envato, 2026</div>
+    </div>
+    <div class="counter-card" data-target="1" data-suffix=" млн+" data-istext="true">
+      <div class="counter-value"><span class="num">0</span><span class="unit"> млн+</span></div>
+      <div class="counter-label">изображений генерирует Midjourney в день</div>
+      <div class="counter-source">WifiTalents, 2026</div>
+    </div>
+    <div class="counter-card" data-target="90" data-suffix="%">
+      <div class="counter-value"><span class="num">0</span><span class="unit">%</span></div>
+      <div class="counter-label">онлайн-контента может быть создано AI к 2026</div>
+      <div class="counter-source">Industry estimate</div>
+    </div>
+    <div class="counter-card" data-target="60" data-suffix="%">
+      <div class="counter-value"><span class="num">0</span><span class="unit">%</span></div>
+      <div class="counter-label">потребителей не отличают AI-текст от человеческого</div>
+      <div class="counter-source">WifiTalents, 2026</div>
+    </div>
+    <div class="counter-card" data-target="69" data-suffix="%">
+      <div class="counter-value"><span class="num">0</span><span class="unit">%</span></div>
+      <div class="counter-label">креаторов не чувствуют себя готовыми к AI-будущему</div>
+      <div class="counter-source">Envato, 2026</div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== NARRATIVE 2 ===== -->
+<div class="narrative fade-in">
+  <p>Но трансформация распределена неравномерно. Одни профессии потеряли <strong>треть вакансий</strong> за год, другие — наоборот выросли. AI создаёт новых победителей и проигравших.</p>
+</div>
+
+<!-- ===== ACT 2: КТО ЗАТРОНУТ ===== -->
+<section class="act" id="act2">
+  <div class="act-number fade-in">Акт II</div>
+  <h2 class="fade-in">Кто затронут?</h2>
+  <p class="act-desc fade-in">Изменение числа вакансий по креативным профессиям, 2025 vs 2024. Анализ 180 миллионов вакансий.</p>
+
+  <div class="bar-chart-container" id="barChart">
+    <div class="bar-row" data-value="33" data-dir="neg">
+      <div class="bar-label">3D/VFX-художники</div>
+      <div class="bar-track"><div class="bar-fill negative">−33%</div></div>
+    </div>
+    <div class="bar-row" data-value="28" data-dir="neg">
+      <div class="bar-label">Фотографы</div>
+      <div class="bar-track"><div class="bar-fill negative">−28%</div></div>
+    </div>
+    <div class="bar-row" data-value="28" data-dir="neg">
+      <div class="bar-label">Копирайтеры</div>
+      <div class="bar-track"><div class="bar-fill negative">−28%</div></div>
+    </div>
+    <div class="bar-row" data-value="22" data-dir="neg">
+      <div class="bar-label">Журналисты</div>
+      <div class="bar-track"><div class="bar-fill negative">−22%</div></div>
+    </div>
+    <div class="bar-row" data-value="21" data-dir="neg">
+      <div class="bar-label">PR-специалисты</div>
+      <div class="bar-track"><div class="bar-fill negative">−21%</div></div>
+    </div>
+    <div class="bar-row" data-value="10" data-dir="pos">
+      <div class="bar-label">Веб-дизайнеры</div>
+      <div class="bar-track"><div class="bar-fill positive">+10%</div></div>
+    </div>
+    <div class="bar-row" data-value="39" data-dir="pos">
+      <div class="bar-label">Видеомонтажёры</div>
+      <div class="bar-track"><div class="bar-fill positive">+39%</div></div>
+    </div>
+    <div class="bar-row" data-value="120" data-dir="pos" data-max="120">
+      <div class="bar-label">AI Creative Director ✦</div>
+      <div class="bar-track"><div class="bar-fill positive">+120%</div></div>
+    </div>
+  </div>
+  <p style="font-size:0.75rem; color:#555; margin-top:1.5rem; text-align:center;">Источники: Bloomberry (180M вакансий), WifiTalents · ✦ новая роль, рост с 2022</p>
+</section>
+
+<!-- ===== NARRATIVE 3 ===== -->
+<div class="narrative fade-in">
+  <p>За эти два года AI-инструменты для творчества появлялись <strong>со скоростью нового продукта каждый месяц</strong>. От генерации картинок — к видео, музыке, голосу, 3D. Хронология впечатляет.</p>
+</div>
+
+<!-- ===== ACT 3: TIMELINE ===== -->
+<section class="act" id="act3">
+  <div class="act-number fade-in">Акт III</div>
+  <h2 class="fade-in">Хронология революции</h2>
+  <p class="act-desc fade-in">Ключевые релизы AI-инструментов для креативных индустрий</p>
+
+  <div class="timeline-container" id="timeline">
+    <div class="timeline-line"><div class="timeline-line-fill" id="timelineFill"></div></div>
+
+    <div class="timeline-year" data-delay="0">2022</div>
+    <div class="timeline-item" data-delay="100"><div class="timeline-date">Март</div><div class="timeline-content"><span class="timeline-tool">Midjourney</span> <span class="timeline-event">— запуск Discord-сервера</span></div></div>
+    <div class="timeline-item" data-delay="200"><div class="timeline-date">Июль</div><div class="timeline-content"><span class="timeline-tool">DALL-E 2</span> <span class="timeline-event">— публичный доступ</span></div></div>
+    <div class="timeline-item" data-delay="300"><div class="timeline-date">Август</div><div class="timeline-content"><span class="timeline-tool">Stable Diffusion</span> <span class="timeline-event">— open-source релиз</span></div></div>
+    <div class="timeline-item highlight" data-delay="400"><div class="timeline-date">Ноябрь</div><div class="timeline-content"><span class="timeline-tool">ChatGPT</span> <span class="timeline-event">— запуск. Катализатор AI-волны</span></div></div>
+
+    <div class="timeline-year" data-delay="500">2023</div>
+    <div class="timeline-item" data-delay="600"><div class="timeline-date">Январь</div><div class="timeline-content"><span class="timeline-tool">ElevenLabs</span> <span class="timeline-event">— бета: генерация голоса</span></div></div>
+    <div class="timeline-item" data-delay="700"><div class="timeline-date">Март</div><div class="timeline-content"><span class="timeline-tool">Adobe Firefly</span> <span class="timeline-event">— бета, интеграция с Creative Cloud</span></div></div>
+    <div class="timeline-item" data-delay="800"><div class="timeline-date">Июнь</div><div class="timeline-content"><span class="timeline-tool">Runway Gen-2</span> <span class="timeline-event">— первая коммерческая text-to-video</span></div></div>
+    <div class="timeline-item" data-delay="900"><div class="timeline-date">Октябрь</div><div class="timeline-content"><span class="timeline-tool">DALL-E 3</span> <span class="timeline-event">— в ChatGPT Plus</span></div></div>
+
+    <div class="timeline-year" data-delay="1000">2024</div>
+    <div class="timeline-item" data-delay="1100"><div class="timeline-date">Март</div><div class="timeline-content"><span class="timeline-tool">Suno V3</span> <span class="timeline-event">— AI-генерация музыки</span></div></div>
+    <div class="timeline-item" data-delay="1200"><div class="timeline-date">Июнь</div><div class="timeline-content"><span class="timeline-tool">Kling AI 1.0</span> <span class="timeline-event">— китайское text-to-video</span></div></div>
+    <div class="timeline-item" data-delay="1300"><div class="timeline-date">Сентябрь</div><div class="timeline-content"><span class="timeline-tool">Runway Gen-3 Alpha</span> <span class="timeline-event">— новое поколение видео</span></div></div>
+    <div class="timeline-item" data-delay="1400"><div class="timeline-date">Октябрь</div><div class="timeline-content"><span class="timeline-tool">Adobe Firefly Video</span> <span class="timeline-event">— видеомодель</span></div></div>
+    <div class="timeline-item highlight" data-delay="1500"><div class="timeline-date">Декабрь</div><div class="timeline-content"><span class="timeline-tool">Sora (OpenAI)</span> <span class="timeline-event">— публичный релиз text-to-video</span></div></div>
+    <div class="timeline-item" data-delay="1600"><div class="timeline-date">Декабрь</div><div class="timeline-content"><span class="timeline-tool">Google Veo 2</span> <span class="timeline-event">— релиз через VideoFX</span></div></div>
+
+    <div class="timeline-year" data-delay="1700">2025</div>
+    <div class="timeline-item" data-delay="1800"><div class="timeline-date">Апрель</div><div class="timeline-content"><span class="timeline-tool">Midjourney V7</span> <span class="timeline-event">— фотореалистичная генерация</span></div></div>
+    <div class="timeline-item" data-delay="1900"><div class="timeline-date">Май</div><div class="timeline-content"><span class="timeline-tool">Google Veo 3</span> <span class="timeline-event">— видео с синхронным аудио</span></div></div>
+    <div class="timeline-item" data-delay="2000"><div class="timeline-date">Июль</div><div class="timeline-content"><span class="timeline-tool">Runway Aleph</span> <span class="timeline-event">— in-context видеомодель</span></div></div>
+    <div class="timeline-item" data-delay="2100"><div class="timeline-date">Октябрь</div><div class="timeline-content"><span class="timeline-tool">Adobe Firefly Image 5</span> <span class="timeline-event">— 4MP фотореализм + аудио</span></div></div>
+
+    <div class="timeline-year" data-delay="2200">2026</div>
+    <div class="timeline-item" data-delay="2300"><div class="timeline-date">Февраль</div><div class="timeline-content"><span class="timeline-tool">Kling AI 3.0</span> <span class="timeline-event">— новая генерация</span></div></div>
+    <div class="timeline-item highlight" data-delay="2400"><div class="timeline-date">Март</div><div class="timeline-content"><span class="timeline-tool">Midjourney V8 Alpha</span> <span class="timeline-event">— последний релиз</span></div></div>
+  </div>
+</section>
+
+<!-- ===== NARRATIVE 4 ===== -->
+<div class="narrative fade-in">
+  <p>Но что всё это значит для обычного рабочего дня? Креатор 2026 года <strong>тратит на рутину на 20% меньше времени</strong>, но 40% «сэкономленного» уходит на проверку AI-результатов. Парадокс новой эпохи.</p>
+</div>
+
+<!-- ===== ACT 4: DONUT CHARTS ===== -->
+<section class="act" id="act4">
+  <div class="act-number fade-in">Акт IV</div>
+  <h2 class="fade-in">День креатора: до и после</h2>
+  <p class="act-desc fade-in">Как изменилось распределение времени в типичном рабочем дне</p>
+
+  <div class="donuts-wrapper" id="donutsWrapper">
+    <div class="donut-section">
+      <div class="donut-title">2023</div>
+      <canvas class="donut-canvas" id="donut2023" width="280" height="280"></canvas>
+      <div class="donut-legend" id="legend2023"></div>
+    </div>
+    <div class="donut-section">
+      <div class="donut-title">2026</div>
+      <canvas class="donut-canvas" id="donut2026" width="280" height="280"></canvas>
+      <div class="donut-legend" id="legend2026"></div>
+    </div>
+  </div>
+  <p style="font-size:0.75rem; color:#555; margin-top:2rem; text-align:center;">Источники: Microsoft Work Trend Index 2024, Envato 2026, Industry surveys</p>
+</section>
+
+<!-- ===== NARRATIVE 5 ===== -->
+<div class="narrative fade-in">
+  <p>Рынок AI-инструментов для креативных индустрий растёт на <strong>31% ежегодно</strong> и достигнет $12.85 млрд к 2029 году. Но главный вопрос — не «сколько», а «куда».</p>
+</div>
+
+<!-- ===== ACT 5: LINE CHART ===== -->
+<section class="act" id="act5">
+  <div class="act-number fade-in">Акт V</div>
+  <h2 class="fade-in">Что дальше?</h2>
+  <p class="act-desc fade-in">Прогноз рынка AI в креативной экономике и уровень adoption</p>
+
+  <div class="line-chart-wrapper fade-in">
+    <canvas class="line-chart-canvas" id="lineChart" width="850" height="420"></canvas>
+    <div class="line-legend">
+      <div class="line-legend-item"><div class="line-legend-swatch" style="background:var(--accent)"></div> Рынок AI Creative ($млрд)</div>
+      <div class="line-legend-item"><div class="line-legend-swatch" style="background:var(--accent3)"></div> Adoption креаторами (%)</div>
+      <div class="line-legend-item"><div class="line-legend-swatch dashed"></div> Прогнозная зона</div>
+    </div>
+  </div>
+  <p style="font-size:0.75rem; color:#555; margin-top:1.5rem; text-align:center;">Источники: Research & Markets 2026, Adobe, Envato, McKinsey</p>
+</section>
+
+<!-- ===== NARRATIVE QUIZ ===== -->
+<div class="narrative fade-in">
+  <p>Данные рассказали свою историю. Теперь ваша очередь — <strong>узнайте, насколько AI изменит именно вашу работу</strong>.</p>
+</div>
+
+<!-- ===== QUIZ ===== -->
+<section class="act" id="quizSection">
+  <div class="quiz-section">
+    <h2>Насколько AI изменит вашу работу?</h2>
+    <p class="quiz-subtitle">5 вопросов — 2 минуты</p>
+
+    <div class="quiz-progress" id="quizProgress"></div>
+
+    <div class="quiz-question active" data-q="0">
+      <div class="quiz-q-number">Вопрос 1 из 5</div>
+      <div class="quiz-q-text">Какую долю вашей работы составляют повторяющиеся, шаблонные задачи?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" data-score="3">Больше 60% — почти вся работа по шаблону</button>
+        <button class="quiz-option" data-score="2">30–60% — примерно половина</button>
+        <button class="quiz-option" data-score="1">10–30% — в основном уникальные задачи</button>
+        <button class="quiz-option" data-score="0">Менее 10% — каждая задача уникальна</button>
+      </div>
+    </div>
+
+    <div class="quiz-question" data-q="1">
+      <div class="quiz-q-number">Вопрос 2 из 5</div>
+      <div class="quiz-q-text">Насколько ваша работа требует глубокого понимания человеческих эмоций и контекста?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" data-score="0">Критически — это суть моей работы</button>
+        <button class="quiz-option" data-score="1">Важно, но не всегда определяющее</button>
+        <button class="quiz-option" data-score="2">Иногда нужно, но не главное</button>
+        <button class="quiz-option" data-score="3">Практически не требуется</button>
+      </div>
+    </div>
+
+    <div class="quiz-question" data-q="2">
+      <div class="quiz-q-number">Вопрос 3 из 5</div>
+      <div class="quiz-q-text">Как часто вы уже используете AI-инструменты в работе?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" data-score="0">Каждый день — они встроены в мой workflow</button>
+        <button class="quiz-option" data-score="1">Несколько раз в неделю</button>
+        <button class="quiz-option" data-score="2">Иногда экспериментирую</button>
+        <button class="quiz-option" data-score="3">Пока не использую</button>
+      </div>
+    </div>
+
+    <div class="quiz-question" data-q="3">
+      <div class="quiz-q-number">Вопрос 4 из 5</div>
+      <div class="quiz-q-text">Какой формат результата вашей работы?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" data-score="3">Текст (статьи, копирайтинг, переводы)</button>
+        <button class="quiz-option" data-score="2">Визуал (дизайн, иллюстрации, фото)</button>
+        <button class="quiz-option" data-score="1">Видео/аудио (монтаж, музыка, подкасты)</button>
+        <button class="quiz-option" data-score="0">Стратегия/управление (арт-дирекшн, бренд)</button>
+      </div>
+    </div>
+
+    <div class="quiz-question" data-q="4">
+      <div class="quiz-q-number">Вопрос 5 из 5</div>
+      <div class="quiz-q-text">Требует ли ваша работа взаимодействия с клиентом «лицом к лицу»?</div>
+      <div class="quiz-options">
+        <button class="quiz-option" data-score="0">Да, постоянно — личные встречи, переговоры</button>
+        <button class="quiz-option" data-score="1">Часто — регулярные созвоны и презентации</button>
+        <button class="quiz-option" data-score="2">Иногда — в основном переписка</button>
+        <button class="quiz-option" data-score="3">Редко — работаю автономно</button>
+      </div>
+    </div>
+
+    <div class="quiz-nav">
+      <button class="quiz-btn" id="quizNext" disabled>Далее →</button>
+    </div>
+
+    <div class="quiz-result" id="quizResult">
+      <div class="quiz-result-score" id="resultScore"></div>
+      <div class="quiz-result-title" id="resultTitle"></div>
+      <div class="quiz-result-text" id="resultText"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ===== FOOTER ===== -->
+<footer class="footer">
+  <h3>Источники данных</h3>
+  <ul>
+    <li><a href="https://news.adobe.com/news/2025/10/adobe-max-2025-creators-survey" target="_blank">Adobe Creators' Toolkit Report</a> — Oct 2025, n=16,000 креаторов</li>
+    <li><a href="https://elements.envato.com/learn/ai-trend-report" target="_blank">Envato «Beyond Adoption: The State of AI in Creative Work 2026»</a> — Nov 2025, n=1,780</li>
+    <li><a href="https://bloomberry.com/blog/i-analyzed-180m-jobs-to-see-what-jobs-ai-is-actually-replacing-today/" target="_blank">Bloomberry «180M jobs analysis»</a> — 2025</li>
+    <li><a href="https://www.brookings.edu/articles/is-generative-ai-a-job-killer-evidence-from-the-freelance-market/" target="_blank">Brookings Institution «Is generative AI a job killer?»</a> — 2024</li>
+    <li><a href="https://www.mckinsey.com/capabilities/quantumblack/our-insights/the-state-of-ai" target="_blank">McKinsey «The State of AI in 2025»</a></li>
+    <li><a href="https://www.anthropic.com/research/labor-market-impacts" target="_blank">Anthropic «Labor Market Impacts of AI»</a> — March 2026</li>
+    <li><a href="https://bernardmarr.com/10-generative-ai-trends-in-2026-that-will-transform-work-and-life/" target="_blank">Forbes / Bernard Marr «10 Generative AI Trends in 2026»</a> — Oct 2025</li>
+    <li><a href="https://wifitalents.com/ai-creative-industry-statistics/" target="_blank">WifiTalents «AI Creative Industry Statistics 2026»</a></li>
+    <li><a href="https://www.globenewswire.com/news-release/2026/01/07/3214696/28124/en/" target="_blank">Research & Markets «AI in Creator Economy Global Report»</a> — Jan 2026</li>
+    <li><a href="https://market.us/report/ai-creativity-and-art-generation-market/" target="_blank">Market.us «AI Creativity and Art Generation Market»</a></li>
+    <li><a href="https://www.sensortower.com/blog/the-impact-of-ai-tools-on-the-freelancing-industry" target="_blank">Sensor Tower — Impact of AI on Freelancing</a></li>
+    <li>Microsoft Work Trend Index Annual Report 2024</li>
+  </ul>
+  <div class="footer-note">
+    Data scrollytelling project · av1sto · Создано с помощью Claude Code · Март 2026
+  </div>
+</footer>
+
+<script>
+// ============================================
+// INTERSECTION OBSERVER — CORE
+// ============================================
+
+function createObserver(callback, options = {}) {
+  return new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        callback(entry.target);
+      }
+    });
+  }, { threshold: options.threshold || 0.2, ...options });
+}
+
+// ============================================
+// FADE-IN ELEMENTS
+// ============================================
+const fadeObserver = createObserver((el) => el.classList.add('visible'), { threshold: 0.15 });
+document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+// ============================================
+// ACT 1: ANIMATED COUNTERS
+// ============================================
+function animateCounter(card) {
+  if (card.dataset.animated) return;
+  card.dataset.animated = 'true';
+  card.classList.add('visible');
+
+  const target = parseFloat(card.dataset.target);
+  const numEl = card.querySelector('.num');
+  const duration = 1800;
+  const start = performance.now();
+
+  function tick(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    const current = Math.round(target * ease);
+    numEl.textContent = current;
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}
+
+const counterObserver = createObserver((el) => {
+  const cards = el.querySelectorAll('.counter-card');
+  cards.forEach((card, i) => {
+    setTimeout(() => animateCounter(card), i * 200);
+  });
+}, { threshold: 0.15 });
+counterObserver.observe(document.getElementById('countersGrid'));
+
+// ============================================
+// ACT 2: ANIMATED BAR CHART
+// ============================================
+const barObserver = createObserver((el) => {
+  if (el.dataset.animated) return;
+  el.dataset.animated = 'true';
+  const rows = el.querySelectorAll('.bar-row');
+  rows.forEach((row, i) => {
+    setTimeout(() => {
+      const val = parseInt(row.dataset.value);
+      const maxVal = parseInt(row.dataset.max) || 40;
+      const pct = Math.min((val / maxVal) * 100, 100);
+      row.querySelector('.bar-fill').style.width = pct + '%';
+    }, i * 120);
+  });
+}, { threshold: 0.2 });
+barObserver.observe(document.getElementById('barChart'));
+
+// ============================================
+// ACT 3: TIMELINE
+// ============================================
+const timelineObserver = createObserver((el) => {
+  if (el.dataset.animated) return;
+  el.dataset.animated = 'true';
+
+  const items = el.querySelectorAll('.timeline-year, .timeline-item');
+  const fill = document.getElementById('timelineFill');
+
+  items.forEach((item, i) => {
+    setTimeout(() => {
+      item.classList.add('visible');
+      const pct = ((i + 1) / items.length) * 100;
+      fill.style.height = pct + '%';
+    }, i * 100);
+  });
+}, { threshold: 0.1 });
+timelineObserver.observe(document.getElementById('timeline'));
+
+// ============================================
+// ACT 4: DONUT CHARTS
+// ============================================
+const donutData2023 = [
+  { label: 'Рутина и переписка', value: 35, color: '#ef4444' },
+  { label: 'Совещания', value: 25, color: '#f97316' },
+  { label: 'Креативная работа', value: 25, color: '#6366f1' },
+  { label: 'Обучение', value: 5, color: '#a78bfa' },
+  { label: 'Административные', value: 10, color: '#64748b' },
+];
+
+const donutData2026 = [
+  { label: 'Рутина и переписка', value: 15, color: '#ef4444' },
+  { label: 'Совещания', value: 15, color: '#f97316' },
+  { label: 'Креативная работа', value: 35, color: '#6366f1' },
+  { label: 'Проверка AI-результатов', value: 20, color: '#fbbf24' },
+  { label: 'Стратегия и обучение', value: 15, color: '#34d399' },
+];
+
+function buildLegend(containerId, data) {
+  const container = document.getElementById(containerId);
+  data.forEach(d => {
+    const item = document.createElement('div');
+    item.className = 'legend-item';
+    item.innerHTML = `<span class="legend-dot" style="background:${d.color}"></span> <span class="value">${d.value}%</span> ${d.label}`;
+    container.appendChild(item);
+  });
+}
+
+buildLegend('legend2023', donutData2023);
+buildLegend('legend2026', donutData2026);
+
+const donutCanvasSetup = {};
+function setupDonutCanvas(canvasId) {
+  if (donutCanvasSetup[canvasId]) return donutCanvasSetup[canvasId];
+  const canvas = document.getElementById(canvasId);
+  const dpr = window.devicePixelRatio || 1;
+  const size = Math.min(280, window.innerWidth * 0.38);
+  canvas.style.width = size + 'px';
+  canvas.style.height = size + 'px';
+  canvas.width = size * dpr;
+  canvas.height = size * dpr;
+  donutCanvasSetup[canvasId] = { canvas, size, dpr };
+  return donutCanvasSetup[canvasId];
+}
+
+function drawDonut(canvasId, data, progress) {
+  const { canvas, size, dpr } = setupDonutCanvas(canvasId);
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  const w = size;
+  const h = size;
+  const cx = w / 2;
+  const cy = h / 2;
+  const outerR = Math.min(w, h) / 2 - 10;
+  const innerR = outerR * 0.58;
+  const total = data.reduce((s, d) => s + d.value, 0);
+
+  ctx.clearRect(0, 0, w, h);
+
+  // Background ring
+  ctx.beginPath();
+  ctx.arc(cx, cy, outerR, 0, Math.PI * 2);
+  ctx.arc(cx, cy, innerR, Math.PI * 2, 0, true);
+  ctx.fillStyle = 'rgba(255,255,255,0.03)';
+  ctx.fill();
+
+  let startAngle = -Math.PI / 2;
+  const maxAngle = Math.PI * 2 * progress;
+
+  data.forEach(d => {
+    const sliceAngle = (d.value / total) * Math.PI * 2;
+    const drawAngle = Math.min(sliceAngle, Math.max(0, maxAngle - (startAngle + Math.PI / 2)));
+
+    if (drawAngle > 0) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, outerR, startAngle, startAngle + drawAngle);
+      ctx.arc(cx, cy, innerR, startAngle + drawAngle, startAngle, true);
+      ctx.closePath();
+      ctx.fillStyle = d.color;
+      ctx.fill();
+    }
+    startAngle += sliceAngle;
+  });
+}
+
+let donutAnimated = false;
+const donutObserver = createObserver((el) => {
+  if (donutAnimated) return;
+  donutAnimated = true;
+
+  const duration = 1500;
+  const start = performance.now();
+
+  function tick(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+
+    drawDonut('donut2023', donutData2023, ease);
+    drawDonut('donut2026', donutData2026, ease);
+
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}, { threshold: 0.25 });
+donutObserver.observe(document.getElementById('donutsWrapper'));
+
+// ============================================
+// ACT 5: ANIMATED LINE CHART
+// ============================================
+
+const lineData = {
+  years: [2022, 2023, 2024, 2025, 2026, 2027, 2028, 2029],
+  market: [0.8, 1.5, 3.31, 4.35, 5.7, 7.5, 9.9, 12.85],
+  adoption: [25, 40, 60, 75, 86, 90, 93, 95],
+  forecastStart: 5
+};
+
+let lineCanvasSetup = null;
+function setupLineCanvas(canvas) {
+  if (lineCanvasSetup) return lineCanvasSetup;
+  const dpr = window.devicePixelRatio || 1;
+  const W = Math.min(850, window.innerWidth - 40);
+  const H = Math.round(W * 0.5);
+  canvas.style.width = W + 'px';
+  canvas.style.height = H + 'px';
+  canvas.width = W * dpr;
+  canvas.height = H * dpr;
+  lineCanvasSetup = { W, H, dpr };
+  return lineCanvasSetup;
+}
+
+function drawLineChart(canvas, progress) {
+  const { W, H, dpr } = setupLineCanvas(canvas);
+  const ctx = canvas.getContext('2d');
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+
+  ctx.clearRect(0, 0, W, H);
+
+  const pad = { top: 40, right: 60, bottom: 50, left: 60 };
+  const chartW = W - pad.left - pad.right;
+  const chartH = H - pad.top - pad.bottom;
+
+  // Grid
+  ctx.strokeStyle = 'rgba(255,255,255,0.06)';
+  ctx.lineWidth = 1;
+  for (let i = 0; i <= 5; i++) {
+    const y = pad.top + (chartH / 5) * i;
+    ctx.beginPath();
+    ctx.moveTo(pad.left, y);
+    ctx.lineTo(W - pad.right, y);
+    ctx.stroke();
+  }
+
+  // Years
+  ctx.fillStyle = '#6a6a7a';
+  ctx.font = '12px Inter, sans-serif';
+  ctx.textAlign = 'center';
+  lineData.years.forEach((yr, i) => {
+    const x = pad.left + (chartW / (lineData.years.length - 1)) * i;
+    ctx.fillText(yr, x, H - pad.bottom + 25);
+  });
+
+  // Y-axis labels — market
+  ctx.textAlign = 'right';
+  ctx.fillStyle = '#6366f1';
+  const maxMarket = 14;
+  for (let i = 0; i <= 5; i++) {
+    const val = (maxMarket / 5) * (5 - i);
+    const y = pad.top + (chartH / 5) * i;
+    ctx.fillText('$' + val.toFixed(0) + 'B', pad.left - 10, y + 4);
+  }
+
+  // Y-axis labels — adoption
+  ctx.textAlign = 'left';
+  ctx.fillStyle = '#34d399';
+  for (let i = 0; i <= 5; i++) {
+    const val = (100 / 5) * (5 - i);
+    const y = pad.top + (chartH / 5) * i;
+    ctx.fillText(val + '%', W - pad.right + 10, y + 4);
+  }
+
+  function xPos(i) { return pad.left + (chartW / (lineData.years.length - 1)) * i; }
+  function yMarket(v) { return pad.top + chartH - (v / maxMarket) * chartH; }
+  function yAdopt(v) { return pad.top + chartH - (v / 100) * chartH; }
+
+  const totalPoints = lineData.years.length;
+  const pointsToDraw = Math.floor(progress * totalPoints * 2) / 2;
+
+  // Forecast shaded area
+  if (progress > 0.5) {
+    const fi = lineData.forecastStart;
+    ctx.fillStyle = 'rgba(167, 139, 250, 0.06)';
+    ctx.beginPath();
+    ctx.moveTo(xPos(fi), pad.top);
+    ctx.lineTo(xPos(totalPoints - 1), pad.top);
+    ctx.lineTo(xPos(totalPoints - 1), pad.top + chartH);
+    ctx.lineTo(xPos(fi), pad.top + chartH);
+    ctx.closePath();
+    ctx.fill();
+
+    // Forecast label
+    ctx.fillStyle = 'rgba(167, 139, 250, 0.4)';
+    ctx.font = '11px Inter, sans-serif';
+    ctx.textAlign = 'center';
+    ctx.fillText('← Прогноз →', xPos(fi) + (xPos(totalPoints - 1) - xPos(fi)) / 2, pad.top + 20);
+  }
+
+  // Draw lines
+  function drawLine(values, yFn, color, maxIdx) {
+    if (maxIdx < 1) return;
+    const n = Math.min(Math.ceil(maxIdx), values.length);
+    const frac = maxIdx - Math.floor(maxIdx);
+
+    ctx.strokeStyle = color;
+    ctx.lineWidth = 2.5;
+    ctx.lineJoin = 'round';
+    ctx.beginPath();
+    ctx.moveTo(xPos(0), yFn(values[0]));
+
+    for (let i = 1; i < n; i++) {
+      ctx.lineTo(xPos(i), yFn(values[i]));
+    }
+
+    if (frac > 0 && n < values.length) {
+      const prevX = xPos(n - 1), prevY = yFn(values[n - 1]);
+      const nextX = xPos(n), nextY = yFn(values[n]);
+      ctx.lineTo(prevX + (nextX - prevX) * frac, prevY + (nextY - prevY) * frac);
+    }
+
+    ctx.stroke();
+
+    // Dots
+    for (let i = 0; i < n; i++) {
+      ctx.beginPath();
+      ctx.arc(xPos(i), yFn(values[i]), 4, 0, Math.PI * 2);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.strokeStyle = '#0a0a0f';
+      ctx.lineWidth = 2;
+      ctx.stroke();
+    }
+
+    // Dashed for forecast
+    if (n > lineData.forecastStart) {
+      ctx.setLineDash([6, 4]);
+      ctx.strokeStyle = color;
+      ctx.lineWidth = 2;
+      ctx.globalAlpha = 0.5;
+      ctx.beginPath();
+      ctx.moveTo(xPos(lineData.forecastStart), yFn(values[lineData.forecastStart]));
+      for (let i = lineData.forecastStart + 1; i < n; i++) {
+        ctx.lineTo(xPos(i), yFn(values[i]));
+      }
+      ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.globalAlpha = 1;
+    }
+  }
+
+  drawLine(lineData.market, yMarket, '#6366f1', pointsToDraw);
+  drawLine(lineData.adoption, yAdopt, '#34d399', pointsToDraw);
+}
+
+let lineAnimated = false;
+const lineObserver = createObserver((el) => {
+  if (lineAnimated) return;
+  lineAnimated = true;
+
+  const canvas = document.getElementById('lineChart');
+  const duration = 2200;
+  const start = performance.now();
+
+  function tick(now) {
+    const elapsed = now - start;
+    const progress = Math.min(elapsed / duration, 1);
+    const ease = 1 - Math.pow(1 - progress, 3);
+    drawLineChart(canvas, ease);
+    if (progress < 1) requestAnimationFrame(tick);
+  }
+  requestAnimationFrame(tick);
+}, { threshold: 0.2 });
+lineObserver.observe(document.getElementById('lineChart'));
+
+// ============================================
+// QUIZ
+// ============================================
+(function () {
+  const questions = document.querySelectorAll('.quiz-question');
+  const progressContainer = document.getElementById('quizProgress');
+  const nextBtn = document.getElementById('quizNext');
+  const resultDiv = document.getElementById('quizResult');
+  let current = 0;
+  let scores = [];
+
+  // Build dots
+  for (let i = 0; i < questions.length; i++) {
+    const dot = document.createElement('div');
+    dot.className = 'quiz-dot' + (i === 0 ? ' current' : '');
+    progressContainer.appendChild(dot);
+  }
+
+  function updateDots() {
+    const dots = progressContainer.querySelectorAll('.quiz-dot');
+    dots.forEach((d, i) => {
+      d.className = 'quiz-dot';
+      if (i < current) d.classList.add('done');
+      if (i === current) d.classList.add('current');
+    });
+  }
+
+  // Option click
+  document.querySelectorAll('.quiz-option').forEach(btn => {
+    btn.addEventListener('click', function () {
+      const q = this.closest('.quiz-question');
+      q.querySelectorAll('.quiz-option').forEach(o => o.classList.remove('selected'));
+      this.classList.add('selected');
+      nextBtn.disabled = false;
+    });
+  });
+
+  nextBtn.addEventListener('click', () => {
+    const q = questions[current];
+    const selected = q.querySelector('.quiz-option.selected');
+    if (!selected) return;
+
+    scores.push(parseInt(selected.dataset.score));
+
+    if (current < questions.length - 1) {
+      questions[current].classList.remove('active');
+      current++;
+      questions[current].classList.add('active');
+      nextBtn.disabled = true;
+      updateDots();
+    } else {
+      // Show result
+      questions[current].classList.remove('active');
+      nextBtn.style.display = 'none';
+      progressContainer.style.display = 'none';
+      showResult();
+    }
+  });
+
+  function showResult() {
+    const total = scores.reduce((a, b) => a + b, 0);
+    const max = questions.length * 3;
+    const pct = Math.round((total / max) * 100);
+
+    const scoreEl = document.getElementById('resultScore');
+    const titleEl = document.getElementById('resultTitle');
+    const textEl = document.getElementById('resultText');
+
+    scoreEl.textContent = pct + '%';
+
+    if (pct >= 75) {
+      titleEl.textContent = 'Высокий уровень трансформации';
+      textEl.textContent = 'Ваша работа находится в зоне максимальных изменений от AI. Рекомендуем активно осваивать AI-инструменты и переходить от исполнительских к стратегическим задачам. Те, кто адаптируется первыми, получат конкурентное преимущество — как «AI Creative Directors» с ростом вакансий на 120%.';
+    } else if (pct >= 45) {
+      titleEl.textContent = 'Умеренная трансформация';
+      textEl.textContent = 'AI существенно изменит часть вашей работы, но ключевые компетенции останутся востребованными. Ваша задача — использовать AI для ускорения рутинных операций и сфокусироваться на том, что AI пока делает хуже: стратегическое мышление, эмпатия, оригинальное видение.';
+    } else {
+      titleEl.textContent = 'Устойчивость к AI-трансформации';
+      textEl.textContent = 'Ваша работа сочетает человеческие навыки, которые AI пока не может заменить: глубокое понимание контекста, личные отношения, стратегическое видение. Но даже в вашей области AI станет мощным инструментом — 86% креаторов уже его используют.';
+    }
+
+    resultDiv.classList.add('active');
+  }
+})();
+
+</script>
+</body>
+</html>
